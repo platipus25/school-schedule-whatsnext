@@ -28,7 +28,7 @@ let className = (id) => {
     let node = $( `#${ id }` )
     let parent = node.parent()
     
-    if(value) value = value.class.name
+    if(value) value = value.class.name.toString()
     node.text(value)
 
     if(value){
@@ -40,12 +40,13 @@ let className = (id) => {
 
 let percent = () => {
     let value = inst.percent || ""
-    let node = $( "#percent" )
+    let node = $( "#percent_bar" )
     let parent = node.parent()
 
-    node.css("width", `${inst.percent}vw`)
-    node.css("transform", `translateX(calc(50vw - ${inst.percent/2}vw))`)
-    
+    node.css("width", `${inst.percent}%`)
+    node.css("margin-left", `calc(50% - ${inst.percent/2}%)`)
+    $("#percent").text(`${value.toFixed(0)}%`)
+
     if(value){
         parent.show()
     }else{
@@ -61,6 +62,7 @@ let updateFrame = () => {
     className("thisClass")
     className("enumerateNextClass")
     percent()
+    
 }
 
 setInterval(updateFrame, 1000)
