@@ -39,13 +39,15 @@ let className = (id) => {
 }
 
 let percent = () => {
-    let value = inst.percent || ""
-    let node = $( "#percent_bar" )
+    let value = inst.percent || 0
+    let node = $( "#percent" )
+    let bar_node = $( "#percent_bar" )
     let parent = node.parent()
 
-    node.css("width", `${inst.percent}%`)
-    node.css("margin-left", `calc(50% - ${inst.percent/2}%)`)
-    $("#percent").text(`${value.toFixed(0)}%`)
+    bar_node.css("width", `${value}%`)
+    bar_node.css("margin-left", `calc(50% - ${value/2}%)`)
+
+    node.text(`${value.toFixed(1)}%`) // value.toFixed(0)
 
     if(value){
         parent.show()
