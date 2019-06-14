@@ -1,0 +1,11 @@
+{
+  "name": "school-schedule-whatsnext",
+  "version": "1.0.0",
+  "description": "An app that helps you with the school schedule",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "platipus25",
+  "license": "ISC"
+}
