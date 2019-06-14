@@ -5,7 +5,7 @@
   "version": "0.0.1",
   "manifest_version":2,
   "browser_action": {
-    "default_popup": "popup.html",
+    "default_popup": "index.html",
     "default_icon": {
         "16": "img/clock16.png",
         "32": "img/clock32.png"
