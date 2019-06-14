@@ -7,6 +7,7 @@
     updateFrame()
 
 })()
+console.log(whatsnext)
 
 let countdown = (id) => {
     let value = inst[id]() || ""
