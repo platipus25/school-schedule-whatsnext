@@ -1,5 +1,5 @@
 body{
-    font-size:calc(1em + 2.2vw);
+    font-size:calc(1em + 2vw);
     font-family:"Montserrat", sans-serif;
     display:grid;
     font-weight:200;
@@ -7,10 +7,15 @@ body{
     grid-template-columns: 1fr;
 }
 
+#container{
+    display:grid;
+    justify-content: center;
+}
+
 question{
     white-space: nowrap;
     color: #666;
-    margin: 0.5em 0;
+    margin: 0.25em 0;
     display:block;
 }
 answer{
