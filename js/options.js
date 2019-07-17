@@ -13,7 +13,7 @@ window.periods = {
 let load = (periodsList = periods) => {
     for(period in periodsList){
         $(`#${period}-teacher`).val(periodsList[period].teacher || "")
-        $(`#${period}-subject`).val(periodsList[period].subject || "")
+        $(`#${period}-subject`).val(periodsList[period].name || "")
     }
 }
 
@@ -21,7 +21,7 @@ let get = (periodList = periods) => {
     let list = {...periodList}
     for(period in list){
         list[period].teacher = $(`#${period}-teacher`).val()
-        list[period].subject = $(`#${period}-subject`).val()
+        list[period].name = $(`#${period}-subject`).val()
     }
     periodList = list
     return list
@@ -37,17 +37,20 @@ $("#classes").on("submit", (event) => {
 
 $(document).ready(() => {
     periods = store.get("periodInfo")
+    $("#classes").append($("<input type='submit' id='submit-top'/>"))
     for(period in periods){
         let addon = $(`
-            <h4>Period ${period}:</h4>
-            <input id="${period}-subject" placeholder="Subject" value="${periods[period].subject || ""}"/>
-            <input id="${period}-teacher" placeholder="Teacher" value="${periods[period].teacher || ""}"/>
+            <div class="period">
+                <h4>Period ${period}:</h4>
+                <input id="${period}-subject" placeholder="Subject" value="${periods[period].name || ""}"/>
+                <input id="${period}-teacher" placeholder="Teacher" value="${periods[period].teacher || ""}"/>
+            </div>
         `)
     
         $("#classes").append(addon)
     }
     
-    $("#classes").append($("<input type='submit'/>"))
+    $("#classes").append($("<input type='submit' id='submit-bottom'/>"))
 
 })
 
