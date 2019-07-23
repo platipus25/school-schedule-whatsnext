@@ -8,20 +8,19 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:300|Overlock&display=swap" rel="stylesheet">
     </head>
     <body>
-        <div id="container">
-            <h2>Whatsnext</h2>
-            <question id="percent_container"><answer id="percent"></answer><answer id="percent_bar"></answer></question>
-            <question>This Period:<answer id="thisClass-period"></answer><wbr/><answer id="thisClass"></answer>&ndash;<wbr/><answer id="thisClassCountdown"></answer></question>
-            <question>Next Period:<wbr/><answer id="enumerateNextClass-period"></answer><wbr/><answer id="enumerateNextClass"></answer>&ndash;<wbr/><answer id="enumerateNextClassCountdown"></answer></question>
-            <question>End of Schoolday:<wbr/><answer id="endOfSchoolCountdown"></answer></question>
-            <question>Next day off:<wbr/><answer id="nextDayOff"></answer>&ndash;<answer id="nextDayOffCountdown"></answer></question>
-        </div>
-
+        <h2 class="title">Whatsnext</h2>
+        <question id="percent_container"><answer id="percent"></answer><answer id="percent_bar"></answer></question>
+        <question>This Period:<wbr/><answer id="thisClass-period"></answer><answer id="thisClass" class="className"></answer>&ndash;<answer id="thisClassCountdown" class="countdown"></answer></question>
+        <question>Next Period:<wbr/><answer id="enumerateNextClass-period"></answer><answer id="enumerateNextClass" class="className"></answer>&ndash;<answer id="enumerateNextClassCountdown" class="countdown"></answer></question>
+        <question>End of Schoolday:<wbr/><answer id="endOfSchoolCountdown" class="countdown"></answer></question>
+        <question>Next day off:<wbr/><answer id="nextDayOff"></answer>&ndash;<answer id="nextDayOffCountdown" class="countdown"></answer></question>
         <div id="footer">
-            <a href="options.html">Input your own classes</a>
+            <a id="openOptions">Input your own classes</a>
+            
         </div>
 
-        <script src="http://whatsnext.cdn.platipus25.com/whatsnext.web.js"></script> <!-- use /js/whatsnext.web.js-->
+        <!--<script src="http://whatsnext.cdn.platipus25.com/whatsnext.web.js"></script>--> <!-- use /js/whatsnext.web.js-->
+        <script src="js/whatsnext.web-f3a93a1.js"></script>
         <script src="js/jquery-3.4.1.min.js"></script>
         <script src="js/store.modern.min.js"></script>
         <script src="js/index.js"></script>
