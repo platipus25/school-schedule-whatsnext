@@ -33,10 +33,15 @@ $("#classes").on("submit", (event) => {
     console.log(event)
     get()
     store.set("periodInfo", periods)
+
+    
+    window.history.back();
 })
 
 $(document).ready(() => {
-    periods = store.get("periodInfo")
+    let periods_stored = store.get("periodInfo")
+    console.log(periods_stored)
+    if(periods_stored) periods = periods_stored
     $("#classes").append($("<input type='submit' id='submit-top'/>"))
     for(period in periods){
         let addon = $(`
