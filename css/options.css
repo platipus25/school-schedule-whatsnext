@@ -3,6 +3,7 @@ body{
   font-family:"Montserrat", sans-serif;
   display:grid;
   font-weight:200;
+  min-width:400px;
   max-width: 100vw;
   grid-template-columns: 1fr;
 }
