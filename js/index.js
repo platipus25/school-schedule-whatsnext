@@ -13,7 +13,7 @@ var { HOURS, MINUTES, SECONDS, DAYS, WEEKS, MONTHS } = whatsnext.countdown;
     console.log(nextSchool)
     window.inst = new whatsnext.WhatsnextSim(schedule_base, 0, nextSchool);//new Date(2019, 2, 8, 9, 30));
     
-    window.inst = new whatsnext.Whatsnext(schedule_base);
+    //window.inst = new whatsnext.Whatsnext(schedule_base);
     console.log(inst)
     updateFrame()
 
@@ -68,9 +68,9 @@ let numberToFancy = (num) => {
 
 let hasNumber = (str) => !isNaN(Number($.trim(str))) && $.trim(str) != ""
 
-let countdown = (id, units = null) => {
+let countdown = (id, units = null, max = 2) => {
     let countdownUnits = units || MINUTES | HOURS | DAYS | WEEKS | MONTHS; // minutes | hours | days | weeks | months
-    let value = inst[id](countdownUnits, 2) || ""
+    let value = inst[id](countdownUnits, max) || ""
     let node = $( `#${ id }` )
     let parent = node.parent()
 
@@ -80,7 +80,7 @@ let countdown = (id, units = null) => {
         parent.hide()
     }
     
-    if(value) value = value.toHTML("number")
+    if(value) value = value.toHTML("number class='bold'")
     node.html(value)
 }
 
@@ -171,9 +171,24 @@ let updateFrame = () => {
     className("enumerateNextClass")
     countdown("endOfSchoolCountdown")
     nextDayOff("nextDayOff")
-    countdown("nextDayOffCountdown")
+    countdown("nextDayOffCountdown", countdown.DEFAULT, 1)
     percent()
     
 }
 
 setInterval(updateFrame, 1000)
+
+// Chrome extension specific "methods"
+
+var openOptions = () => {
+    var chrome
+    if(chrome && chrome["runtime"]){
+        if (chrome.runtime.openOptionsPage) {
+            chrome.runtime.openOptionsPage();
+        }
+    }else{
+        window.open("options.html", "_self")
+    }
+}
+
+$("#openOptions").on("click", openOptions)
