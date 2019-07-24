@@ -1,0 +1,24 @@
+{
+  "name": "School Schedule: Whatsnext",
+  "short_name":"whatsnext",
+  "description": "An extension with a popup that tells when the next period is.",
+  "version": "0.0.1",
+  "manifest_version":2,
+  "browser_action": {
+    "default_popup": "index.html",
+    "default_icon": {
+        "16": "img/clock16.png",
+        "32": "img/clock32.png"
+      }
+  },
+  "permissions": [
+          "storage"
+        ],
+  "options_page": "options.html",
+  "icons": {
+      "16": "img/clock16.png",
+      "32": "img/clock32.png",
+      "48": "img/clock48.png",
+      "128": "img/clock128.png"
+  }
+}
