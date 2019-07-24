@@ -187,7 +187,7 @@ var openOptions = () => {
             chrome.runtime.openOptionsPage();
         }
     }else{
-        window.open("options.html", "_self")
+        window.open("options.html", "_blank")
     }
 }
 
