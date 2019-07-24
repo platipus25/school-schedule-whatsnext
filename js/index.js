@@ -182,7 +182,7 @@ setInterval(updateFrame, 1000)
 
 var openOptions = () => {
     var chrome
-    if(chrome && chrome["runtime"]){
+    if(!!chrome && chrome["runtime"]){
         if (chrome.runtime.openOptionsPage) {
             chrome.runtime.openOptionsPage();
         }
