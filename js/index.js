@@ -192,3 +192,8 @@ var openOptions = () => {
 }
 
 $("#openOptions").on("click", openOptions)
+
+var sim = (date = new Date(), multiplier = 0) => {
+    window.inst = new whatsnext.WhatsnextSim(schedule_base, multiplier, date)
+    updateFrame()
+}
