@@ -1,8 +1,8 @@
 //import { isRegExp } from "util";
 var { HOURS, MINUTES, SECONDS, DAYS, WEEKS, MONTHS } = whatsnext.countdown;
-
+var useCmsSchedule = true;
 (async () => {
-    let schedule_base = await $.getJSON("https://raw.githubusercontent.com/platipus25/whatsnext/master/examples/config_files/schedule2018-19.json"); // /schedule2018-19.json
+    let schedule_base = await $.getJSON(useCmsSchedule ? "https://raw.githubusercontent.com/platipus25/school-schedule-whatsnext/master/cms-schedule2018-19.json" : "https://raw.githubusercontent.com/platipus25/school-schedule-whatsnext/master/gms-schedule2018-19.json") // chooses either /cms-schedule2018-19.json or /gms-schedule2018-19
     window.schedule_base = {...schedule_base}
 
     schedule_base = applyPersonalizedClasses(schedule_base)
