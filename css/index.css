@@ -1,6 +1,6 @@
 body{
     font-size:calc(1em + 2vw);
-    font-family:"Montserrat", sans-serif;
+    font-family:"Montserrat", "Courier New", sans-serif;
     display:grid;
     font-weight:200;
     max-width: 100vw;
@@ -84,7 +84,7 @@ a:hover{
 }
 
 .className, number, #nextDayOff {
-    font-family: 'Overlock', cursive;
+    font-family: 'Overlock', "Courier New", cursive;
     font-weight:500;
 }
 

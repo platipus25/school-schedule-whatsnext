@@ -1,6 +1,6 @@
 body{
   font-size:calc(1em + 1vw);
-  font-family:"Montserrat", sans-serif;
+  font-family:"Montserrat", "Courier New", sans-serif;
   display:grid;
   font-weight:200;
   min-width:400px;
@@ -24,7 +24,7 @@ h2{
 }
 
 h4{
-  font-family: 'Overlock', cursive;
+  font-family: 'Overlock', "Courier New", cursive;
   font-weight:400;
   font-size: 1.2em;
   text-align:center;
