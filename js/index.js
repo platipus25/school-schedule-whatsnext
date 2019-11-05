@@ -2,18 +2,19 @@
 var { HOURS, MINUTES, SECONDS, DAYS, WEEKS, MONTHS } = whatsnext.countdown;
 
 (async () => {
-    let schedule_base = await $.getJSON("https://raw.githubusercontent.com/platipus25/whatsnext/master/examples/config_files/schedule2018-19.json"); // /schedule2018-19.json
+    let schedule_base = await $.getJSON("MVHS2019-20.json"); // /schedule2018-19.json
     window.schedule_base = {...schedule_base}
 
     schedule_base = applyPersonalizedClasses(schedule_base)
     
+    /*
     //let nextSchool = new whatsnext.WhatsnextStatic(schedule_base, new Date()).enumerateNextClass().start.toDate()
     nextSchool = new Date(2018, 8, 5, 8, 30)
 
     console.log(nextSchool)
-    window.inst = new whatsnext.WhatsnextSim(schedule_base, 0, nextSchool);//new Date(2019, 2, 8, 9, 30));
+    window.inst = new whatsnext.WhatsnextSim(schedule_base, 0, nextSchool);//new Date(2019, 2, 8, 9, 30));*/
     
-    //window.inst = new whatsnext.Whatsnext(schedule_base);
+    window.inst = new whatsnext.Whatsnext(schedule_base);
     console.log(inst)
     updateFrame()
 
@@ -192,8 +193,3 @@ var openOptions = () => {
 }
 
 $("#openOptions").on("click", openOptions)
-
-var sim = (date = new Date(), multiplier = 0) => {
-    window.inst = new whatsnext.WhatsnextSim(schedule_base, multiplier, date)
-    updateFrame()
-}
