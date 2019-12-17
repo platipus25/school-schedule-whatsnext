@@ -1,5 +1,59 @@
 //import { isRegExp } from "util";
 var { HOURS, MINUTES, SECONDS, DAYS, WEEKS, MONTHS } = whatsnext.countdown;
+whatsnext.countdown.setLabels(
+	' ms|s| min| hr| day| week| month| year| decade| century| millennium',
+    ' ms|s| min| hrs| days| weeks| months| years| decades| centuries| millennia',
+	' and ',
+	', ',
+	'',
+    (n) => {return n.toString(10).padStart(1, '0')});
+
+let formatTimespan = (ts_in) => {
+    //console.log(ts)
+    let { seconds, minutes, hours, days, weeks } = ts_in
+    let ts = { seconds, minutes, hours, days, weeks }
+    for(i in ts){
+        if(!ts[i]) ts[i] = 0
+        ts[i] = ts[i].toString()
+    }
+    //console.log(ts)
+    for(i of ["seconds", "minutes"]){
+        //console.log(i, ts[i])
+        ts[i] = ts[i].padStart(2, "0")
+    }
+    
+    ({ seconds, minutes, hours, days, weeks } = ts)
+    short = `${minutes}:${seconds}`
+    if(hours != false){
+        if(minutes == false){
+            short = `${hours} hrs`
+        }else{
+            short = `${hours}:${short}`
+        }
+    }
+    if(hours == false && minutes == false && seconds == false){
+        short = ""
+    }
+    if(weeks != false){
+        weeks = `${weeks} weeks`
+        if(short != false){
+            weeks += ", "
+        }
+    }else {
+        weeks = ""
+    }
+    if(days != false){
+        days = `${days} days`
+        if(short != false){
+            days += ", "
+        }
+    }else {
+        days = ""
+    }
+    output = `${weeks}${days}${short}`
+    console.log(ts_in.toString(), output)
+    return output
+}
 
 (async () => {
     let schedule_base = await $.getJSON("MVHS2019-20.json"); // /schedule2018-19.json
@@ -70,7 +124,7 @@ let numberToFancy = (num) => {
 let hasNumber = (str) => !isNaN(Number($.trim(str))) && $.trim(str) != ""
 
 let countdown = (id, units = null, max = 2) => {
-    let countdownUnits = units || MINUTES | HOURS | DAYS | WEEKS | MONTHS; // minutes | hours | days | weeks | months
+    let countdownUnits = units || SECONDS | MINUTES | HOURS | DAYS | WEEKS | MONTHS; // minutes | hours | days | weeks | months
     let value = inst[id](countdownUnits, max) || ""
     let node = $( `#${ id }` )
     let parent = node.parent()
@@ -81,7 +135,7 @@ let countdown = (id, units = null, max = 2) => {
         parent.hide()
     }
     
-    if(value) value = value.toHTML("number class='bold'")
+    if(value) value = formatTimespan(value, "number class='bold'")
     node.html(value)
 }
 
@@ -172,7 +226,7 @@ let updateFrame = () => {
     className("enumerateNextClass")
     countdown("endOfSchoolCountdown")
     nextDayOff("nextDayOff")
-    countdown("nextDayOffCountdown", countdown.DEFAULT, 1)
+    countdown("nextDayOffCountdown", HOURS | DAYS | WEEKS, 1)
     percent()
     
 }
