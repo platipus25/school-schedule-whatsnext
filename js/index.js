@@ -9,16 +9,13 @@ whatsnext.countdown.setLabels(
     (n) => {return n.toString(10).padStart(1, '0')});
 
 let formatTimespan = (ts_in) => {
-    //console.log(ts)
     let { seconds, minutes, hours, days, weeks } = ts_in
     let ts = { seconds, minutes, hours, days, weeks }
     for(i in ts){
         if(!ts[i]) ts[i] = 0
         ts[i] = ts[i].toString()
     }
-    //console.log(ts)
     for(i of ["seconds", "minutes"]){
-        //console.log(i, ts[i])
         ts[i] = ts[i].padStart(2, "0")
     }
     
@@ -35,7 +32,10 @@ let formatTimespan = (ts_in) => {
         short = ""
     }
     if(weeks != false){
-        weeks = `${weeks} weeks`
+        weeks = `${weeks} week`
+        if(parseInt(ts.weeks) > 1){
+            weeks += "s"
+        }
         if(short != false){
             weeks += ", "
         }
@@ -43,15 +43,21 @@ let formatTimespan = (ts_in) => {
         weeks = ""
     }
     if(days != false){
-        days = `${days} days`
+        days = `${days} day`
+        if(parseInt(ts.days) > 1){
+            days += "s"
+        }
         if(short != false){
             days += ", "
         }
     }else {
         days = ""
     }
+    if(weeks != false && days != false){
+        weeks += ", "
+    }
     output = `${weeks}${days}${short}`
-    console.log(ts_in.toString(), output)
+    //console.log(ts_in.toString(), output)
     return output
 }
 
