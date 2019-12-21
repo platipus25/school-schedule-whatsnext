@@ -1,5 +1,5 @@
 //import { isRegExp } from "util";
-var { HOURS, MINUTES, SECONDS, DAYS, WEEKS, MONTHS } = whatsnext.countdown;
+const { HOURS, MINUTES, SECONDS, DAYS, WEEKS, MONTHS } = whatsnext.countdown;
 whatsnext.countdown.setLabels(
 	' ms|s| min| hr| day| week| month| year| decade| century| millennium',
     ' ms|s| min| hrs| days| weeks| months| years| decades| centuries| millennia',
@@ -8,7 +8,7 @@ whatsnext.countdown.setLabels(
 	'',
     (n) => {return n.toString(10).padStart(1, '0')});
 
-let formatTimespan = (ts_in) => {
+const formatTimespan = (ts_in) => {
     let { seconds, minutes, hours, days, weeks } = ts_in
     let ts = { seconds, minutes, hours, days, weeks }
     for(i in ts){
@@ -83,7 +83,7 @@ console.log(whatsnext)
 
 // pre-processing "methods"
 
-let applyPersonalizedClasses = (base) => {
+const applyPersonalizedClasses = (base) => {
     periods = store.get("periodInfo")
     for(periodName in periods){
         let periodInfo = periods[periodName]
@@ -99,7 +99,7 @@ let applyPersonalizedClasses = (base) => {
     return base
 }
 
-let getAllInstancesOfClass = (obj, periodName, found = []) => {
+const getAllInstancesOfClass = (obj, periodName, found = []) => {
     if(!obj) return found
     let prototype = Object.getPrototypeOf(obj)
     if(prototype != Object.prototype && prototype != Array.prototype) return found
@@ -118,7 +118,7 @@ let getAllInstancesOfClass = (obj, periodName, found = []) => {
 
 // frame handling "methods":
 
-let numberToFancy = (num) => {
+const numberToFancy = (num) => {
     let endings = ["th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th"]
     num = Number(num)
     num = num.toFixed(0)
@@ -127,9 +127,9 @@ let numberToFancy = (num) => {
     return `${num}${ending}`
 }
 
-let hasNumber = (str) => !isNaN(Number($.trim(str))) && $.trim(str) != ""
+const hasNumber = (str) => !isNaN(Number($.trim(str))) && $.trim(str) != ""
 
-let countdown = (id, units = null, max = 2) => {
+const countdown = (id, units = null, max = 2) => {
     let countdownUnits = units || SECONDS | MINUTES | HOURS | DAYS | WEEKS | MONTHS; // minutes | hours | days | weeks | months
     let value = inst[id](countdownUnits, max) || ""
     let node = $( `#${ id }` )
@@ -145,7 +145,7 @@ let countdown = (id, units = null, max = 2) => {
     node.html(value)
 }
 
-let className = (id) => {
+const className = (id) => {
     let value = inst[id]() || ""
     let txt = ""
     let periodValue = ""
@@ -173,7 +173,7 @@ let className = (id) => {
     periodNode.html(periodValue)
 }
 
-let nextDayOff = (id) => {
+const nextDayOff = (id) => {
     let value = inst[id]() || ""
     let node = $( `#${ id }` )
     let parent = node.parent()
@@ -189,7 +189,7 @@ let nextDayOff = (id) => {
     node.text(value)
 }
 
-let classAttribute = (id, attrId) => {
+const classAttribute = (id, attrId) => {
     let value = inst[id]() || ""
     let node = $( `#${ id }-${ attrId }` )
     let parent = node.parent()
@@ -206,7 +206,7 @@ let classAttribute = (id, attrId) => {
     node.text(value)
 }
 
-let percent = () => {
+const percent = () => {
     let value = inst.percent || 0
     let node = $( "#percent" )
     let bar_node = $( "#percent_bar" )
@@ -224,7 +224,7 @@ let percent = () => {
     }
 }
 
-let updateFrame = () => {
+const updateFrame = () => {
     //let inst = window.inst
     countdown("thisClassCountdown")
     countdown("enumerateNextClassCountdown")
@@ -237,11 +237,11 @@ let updateFrame = () => {
     
 }
 
-setInterval(updateFrame, 1000)
+let frameUpdateId = setInterval(updateFrame, 1000)
 
 // Chrome extension specific "methods"
 
-var openOptions = () => {
+const openOptions = () => {
     var chrome
     if(!!chrome && chrome["runtime"]){
         if (chrome.runtime.openOptionsPage) {
