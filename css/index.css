@@ -1,25 +1,29 @@
+html, body {
+    height: 100%;
+}
+
 body{
     font-size:calc(1em + 2vw);
     font-family:"Montserrat", "Courier New", sans-serif;
-    display:grid;
+    display:flex;
+    flex-direction: column;
     font-weight:200;
     max-width: 100vw;
     min-width:100px;
     justify-content: center;
-    padding:0.2em;
-    grid-template-columns: 1fr [content] auto 1fr;
-    grid-template-rows: auto;
+    align-items:center;
+    margin:0;
+    /*grid-template-columns: 1fr [content] auto 1fr;
+    grid-template-rows: auto;*/
 }
 
-#container{
-    grid-column: content-start / content-end;
-}
-
-/*#container{
+.content {
+    flex: 1 0 auto;
     margin:0.2em;
-    display:grid;
-    justify-content: center;
-}*/
+}
+.footer {
+    flex-shrink: 0;
+}
 
 question{
     white-space: nowrap;
