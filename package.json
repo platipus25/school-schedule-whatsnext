@@ -1,0 +1,28 @@
+{
+  "name": "school-schedule-whatsnext",
+  "version": "4.0.0",
+  "description": "A webapp that helps you with your school schedule",
+  "main": "js/electron.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "repository": "https://github.com/platipus25/school-schedule-whatsnext.git",
+  "author": "platipus25 <40722163+platipus25@users.noreply.github.com>",
+  "license": "ISC",
+  "private": false,
+  "devDependencies": {
+    "electron": "^8.1.0",
+    "electron-builder": "^22.4.0"
+  },
+  "build": {
+    "appId": "com.electron.school-schedule-whatsnext",
+    "mac": {
+      "icon": "img/app-icon.icns"
+    },
+    "win": {
+      "icon": "img/app-icon.ico"
+    }
+  }
+}
